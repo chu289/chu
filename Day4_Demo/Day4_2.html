@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day4</title>
+    <!-- Font Awesome 的 CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .header {
+            height: 8vh;
+            width: 100%;
+            background-color: #a18bad;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            width: 50px;
+            position: absolute;
+            left: 100px;
+            cursor: pointer;
+        }
+
+        .header .logo img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .header .info {
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #eeeed5;
+            position: absolute;
+            right: 100px;
+            cursor: pointer;
+        }
+
+        .header .info img {
+            width: 100%;
+        }
+
+        .header form {
+            height: 20px;
+            width: 280px;
+            display: flex;
+            padding: 6px 10px;
+            background-color: #fff;
+            border-radius: 20px;
+            position: absolute;
+            left: 200px;
+        }
+
+        .header form input,
+        .header form button {
+            border: none;
+            background-color: transparent;
+        }
+
+        .header form input {
+            width: 255px;
+            font-size: 16px;
+            color: #a18bad;
+        }
+
+        .header form input:focus {
+            outline: none;
+        }
+
+        .header form button {
+            width: 25px;
+            cursor: pointer;
+        }
+
+        .header form button:hover .fal {
+            color: tomato;
+        }
+
+        .main {
+            height: 92vh;
+            width: 100%;
+            background-color: #eeeed5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main .card {
+            width: 450px;
+            height: 650px;
+            background-color: #e1ddce;
+            color: #a18bad;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: 300;
+            box-shadow: 20px 20px 50px #c7bcc1;
+        }
+
+        .main .card .username {
+            color: #8bada1;
+            font-size: 22px;
+            font-weight: 500;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- HTML -->
+    <div id="it">
+        <div class="header">
+            <div class="logo" @click="popup">
+                <img src="/logo.png" alt="">
+            </div>
+            <form action="">
+                <input type="search" v-model="username">
+                <button @click.prevent='speak'><i class="fal fa-smile-plus"></i></button>
+            </form>
+            <div class="info" @click="popup">
+                <img src="/woman.png" alt="">
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                <div class="card">
+                    您好，<a class="username"> {{ defaultName }} </a> 今天要帶您來閱讀，《設知何爸一下童理品自原海得頭》。
+                    治要子黨年府利；會速筆是。身不年熱價完了我不市、麼到業，為語了開會我夫算行種到集算人信，
+                    上生到不下錯年無論報生財，便會現係的組技大單房看他定子說花的是立會能濟字山次魚。過人起規演然，
+                    不醫包財因，先的體足才有我影會是最，地力生第我戰決類實集多的受理員滿道入樣！中中西？
+                    定的些選隨我代很重後安到看們！聲我失是信農快本在石我表操，學頭沒地少一明，王有子成大灣友共？客兒入不。
+                    為機高上代陽致學光。多高沒失比司功我記野起產而在實開集通的回用一。驗太下的，管回行長的。
+                    認找你是不……著利書為以自依男裡動病第只；須林們慢一童口陽己係，來香去家動心生灣樂子，過興語能自受己岸，
+                    上課演失行，山來景支得，首層示制、叫局童職兒灣身處腦他無怎古給老當他腦作少邊草雄加者器從德件要心：
+                    何製會邊？質金物上。回型這大原政下把學，也有母中溫且，問我學有中分帶聽：事因到直視過切經進下港事；
+                    字時收也小在事天館開易我得風名期來寫象語，決岸羅方；是大產！
+                    而的現布看銀久起是兒我區一達大去。消格業常國。結史長資就一展到務到的他易是不交、相土行府……
+                    人動也給那中流？一還爭養地畫一用！字治手望、表交入工工，分業裡那了之打紅放助。
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#it",
+            data: {
+                username: '',
+                defaultName: '王小美',
+            },
+            methods: {
+                speak() {
+                    const temp = '王小美'
+                    if (this.username === '') {
+                        return this.defaultName = temp
+                    }
+                    this.defaultName = this.username
+                },
+                popup() {
+                    alert(`請在輸入框輸入您的大名`)
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
