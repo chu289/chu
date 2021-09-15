@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day5</title>
+  <!-- Font Awesome 的 CDN -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .header {
+      height: 8vh;
+      width: 100%;
+      background-color: #a18bad;
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo {
+      width: 50px;
+      position: absolute;
+      left: 100px;
+      cursor: pointer;
+    }
+
+    .header .logo img {
+      width: 100%;
+      vertical-align: middle;
+    }
+
+    .header .info {
+      width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #eeeed5;
+      position: absolute;
+      right: 100px;
+      cursor: pointer;
+    }
+
+    .header .info img {
+      width: 100%;
+    }
+
+    .header h1 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: relative;
+
+    }
+
+    .main {
+      height: 92vh;
+      width: 100%;
+      background-color: #eeeed5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main .card {
+      width: 300px;
+      height: 350px;
+      background-color: #e1ddce;
+      color: #a18bad;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 17px;
+      line-height: 1.8;
+      font-weight: 300;
+      box-shadow: 20px 20px 50px #c7bcc1;
+    }
+
+    .card h2 {
+      font-size: 35px;
+      margin: 30px 45px;
+      padding-bottom: .3em;
+      border-bottom: 1px solid #a18bad;
+    }
+
+    .options label {
+      line-height: 3;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id="it">
+    <div class="header">
+      <div class="logo">
+        <img src="/logo.png" alt="">
+      </div>
+      <h1>Todo List</h1>
+      <div class="info">
+        <img src="/woman.png" alt="">
+      </div>
+    </div>
+    <div class="main">
+      <div class="card">
+        <h2>Task</h2>
+        <div class="options" v-for='task in tasks'>
+          <input v-model='task.done' type="checkbox" :list="task.list">
+          <span v-if='task.done'><i class="fal fa-check-double"></i></span>
+          <span v-else><i class="fal fa-list-ul"></i></span>
+          <label :for="task.list">
+            {{ task.content}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#it',
+      data: {
+        tasks: [
+          {
+            list: '1',
+            content: '報名鐵人賽',
+            done: ''
+          },
+          {
+            list: '2',
+            content: '鐵人賽實作',
+            done: ''
+          },
+          {
+            list: '3',
+            content: '鐵人賽發文',
+            done: ''
+          },
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

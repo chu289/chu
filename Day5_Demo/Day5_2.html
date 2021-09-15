@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day5</title>
+    <!-- Font Awesome 的 CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            background: url('https://picsum.photos/1200/600?random=10')
+                        no-repeat center center / cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            width: 500px;
+            height: 400px;
+        }
+
+        .form {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border: 3px solid rgba(255, 255, 255, .6);
+            background-color: rgba(255,255,255, .5);
+            backdrop-filter: blur(5px);
+        }
+
+        .form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form .group {
+            margin-bottom: 20px;
+        }
+
+        .form label {
+            line-height: 2;
+        }
+
+        .form .group input {
+            width: 340px;
+            border: 1px solid#aaa;
+            line-height: 3;
+            border-radius: 5px;
+        }
+
+        .form .btn {
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #f8fcc8;
+            width: 190px;
+            padding: 10px 0;
+            color: #4c2b49;
+        }
+
+        .form .group-gender {
+            display: flex;
+            align-items: center;
+            max-width: 340px;
+            margin-bottom: .3em;
+            font-size: 20px;
+        }
+        
+        .form .group-gender h6,
+        .form .group-gender label {
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <div id='it' class="login">
+        <form class="form">
+            <h2>登入會員</h2>
+            <div class="group-gender">
+                <h6>Gender</h6>
+                <input
+                    type="radio"
+                    value="male"
+                    id="male"
+                    v-model:checkedGender='gender'
+                >
+                <label for="male">Male</label>
+                <input
+                    type="radio"
+                    value="female"
+                    id="female"
+                    v-model:checkedGender='gender'
+                >
+                <label for="female">Female</label>
+            </div>
+            <div class="group">
+                <label for="username">帳號</label>
+                <input
+                    type="text"
+                    id="username"
+                    v-model.trim="userID"
+                    placeholder="請輸入帳號(非e-mail)"
+                >
+            </div>
+            <div class="group">
+                <label for="userPassword">密碼</label>
+                <input
+                    type="password"
+                    id="userPassword"
+                    v-model.trim="password"
+                    placeholder="請輸入密碼"
+                    minlength="8"
+                >
+            </div>
+            <div class="group-btn">
+                <button
+                    class="btn"
+                    @click="signUp"
+                >登入</button>
+                <button
+                    class="btn"
+                    @click="cancel"
+                >取消</button>
+            </div>
+        </form>
+    </div>
+    
+   <!-- Vue 的 CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#it',
+            data: {
+                userID: '',
+                password: '',
+                gender: ''
+            },
+            methods: {
+                signUp() {
+                    alert(`Hello, ${this.userID}，Welcome to Vue.js`)
+                    console.log(
+                        this.gender
+                    );
+                },
+                cancel() {
+                    let userID = ''
+                    let password = ''
+                    let gender = ''
+
+                    this.userID = userID
+                    this.password = password
+                    this.gender = gender
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
