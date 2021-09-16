@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day6</title>
+
+  <!-- Font Awesome 的 CDN -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      background-image: linear-gradient(-45deg, #6ad74b, #4bd7b8);
+    }
+
+    .wrap {
+      display: flex;
+      max-width: 1200px;
+      margin: 100px auto;
+      padding-top: 75px;
+    }
+
+    .item {
+      width: 370px;
+      margin: 0 15px;
+      text-align: center;
+      border: 10px solid #4bd7b8;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 10px 20px 50px #4bd7b9ef;
+    }
+
+    .item h3 {
+      color: #4660be;
+      margin-bottom: 10px;
+      border-bottom: 1px;
+      padding-bottom: .3em;
+
+    }
+
+    .item p {
+      color: #2d3241;
+      line-height: 1.7;
+    }
+
+    .item .icon {
+      width: 150px;
+      height: 150px;
+      background-color: #fff;
+      margin: -75px auto 0;
+      font-size: 60px;
+      line-height: 150px;
+      border-radius: 50%;
+      color: #4660be;
+      position: relative;
+    }
+
+    .item .icon:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-top: 10px solid #4bd7b8;
+      border-right: 10px solid #4bd7b8;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+      left: -10px;
+      top: -10px;
+      border-radius: 50%;
+      transform: rotate(-45deg);
+    }
+
+    .item:hover .fas {
+      animation: shake .2s linear infinite alternate;
+    }
+
+    .item .txt {
+      padding: 20px 20px 2em;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: rotate(-10deg);
+      }
+
+      100% {
+        transform: rotate(10deg);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- HTML -->
+  <div class="wrap" id="it">
+    <div class="item">
+      <div class="icon">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="txt">
+        <h3>{{Home}}</h3>
+        <p>
+          而飛什不外應好是你；活目感任，學人多事的面，人而所首的，辦起最影屋落腦其簡電華是長院意？
+          好面火加重為對依必能需你民濟年。
+          自的賽西是服待公靈漸一，朋到病現較麼落地得腦，開位太體點性歡寫主文日求他上入我功人時別進得物有熱文準到、育會性。
+        </p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="icon">
+        <i class="fas fa-list-ul"></i>
+      </div>
+      <div class="txt">
+        <h3>{{List}}</h3>
+        <p>
+          白學時而上技嗎生李去本主母線能那。
+          生著他美有際能我作夫星過服間只區生前大！
+          夜兒生園參我選智德小達黨雲唱不北雙！
+          什其校總，國哥國心到未功帶易家麗民集到有自裝來下辦爾合步多：
+          自也這息在後一親公我首，後高良用著廣家了收部公之發形民區技些念不歡民。
+        </p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="icon">
+        <i class="fas fa-address-card"></i>
+      </div>
+      <div class="txt">
+        <h3>{{About}}</h3>
+        <p>
+          麼南言。負家還不南行生較學裝生代可麼說場又賣腦處也問入不之仍始現人眾，不世景畫爸，
+          員前那工機最腦片任工終少意成打政定年人部道放子，果開小打間爸社人懷，
+          看通省到首品天他極類笑二手長半之麗立完里。在你就星……在合已著則我該朋學。
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#it',
+      data: {
+        Home: '首頁',
+        List: '記事本',
+        About: '關於我',
+      }
+    })
+  </script>
+
+</body>
+
+</html>

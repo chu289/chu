@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day6</title>
+  <!-- Font Awesome 的 CDN -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+
+  
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .header {
+      height: 8vh;
+      width: 100%;
+      background-color: #a18bad;
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo {
+      width: 50px;
+      position: absolute;
+      left: 100px;
+      cursor: pointer;
+    }
+
+    .header .logo img {
+      width: 100%;
+      vertical-align: middle;
+    }
+
+    .header .info {
+      width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #eeeed5;
+      position: absolute;
+      right: 100px;
+      cursor: pointer;
+    }
+
+    .header .info img {
+      width: 100%;
+    }
+
+    .main {
+      height: 92vh;
+      width: 100%;
+      background-color: #eeeed5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main .card {
+      width: 650px;
+      height: 350px;
+      background-color: #e1ddce;
+      color: #a18bad;
+      padding: 30px;
+      border-radius: 15px;
+      font-size: 17px;
+      line-height: 1.8;
+      font-weight: 300;
+      box-shadow: 20px 20px 50px #c7bcc1;
+      display: flex;
+    }
+
+    .main img {
+      vertical-align: middle;
+    }
+
+    .main .txt {
+      padding: 20px;
+      border-left: 1px;
+      margin-left: 5px;
+      padding-left: 50px;
+    }
+
+    .txt h2 {
+      margin-bottom: 10px;
+      padding-bottom: .3em;
+    }
+
+    .main p {
+      line-height: 2;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- HTML -->
+  <div id="it">
+    <div class="header">
+      <div class="logo">
+        <img src="logo.png" alt="">
+      </div>
+      <div class="info">
+        <img src="woman.png" alt="">
+      </div>
+    </div>
+    <div class="main">
+      <div class="container">
+        <div class="card">
+          <img :src="diary.photo">
+          <div class="txt">
+            <h2>{{diary.title}}</h2>
+            <p>{{diary.contents}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#it',
+      data: {
+        diary: {
+          title: '物地觀為十他即前大信',
+          contents: '樹獎我得形裡臺小年世我許例不雖定，回好會南投家簡達，防的魚一然所破人要領國度全老、觀年因沒們無找？亞故到山。王屋水向強那市越孩善，孩服福覺裡大別平有真少前小交過臺必藝簡線跑民本傷，究媽馬間過全得什輕；們定所皮眾，極以之月山前達、事不其因健子路。',
+          photo: 'https://picsum.photos/300/300/?random=100'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
