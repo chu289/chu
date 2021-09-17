@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com"crossorigin>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+    * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .banner {
+            height: 100vh;
+            background: linear-gradient(115deg, #c8fccc 50%, transparent 50%) center center / 100% 100%,
+                url('https://picsum.photos/1200/600?random=10') right center / auto 100%;
+        }
+
+        .banner .container {
+            height: 100%;
+            width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .banner .pic {
+            width: 200px;
+            display: flex;
+            align-items: center;
+        }
+
+        .banner .pic img {
+            width: 100%;
+            vertical-align: middle;
+            margin: 0 60px;
+        }
+
+        .banner .pic a {
+            text-decoration: none;
+            font-size: 50px;
+            font-weight: 100;
+            color: #614e5f;
+        }
+
+        .banner .txt {
+            padding-top: 60px;
+            position: relative;
+            color: #4c2b49;
+        }
+
+        .banner .txt a {
+          text-decoration: none;
+            position: absolute;
+            left: 60px;
+            font-size: 30px;
+            font-weight: 500;
+        }
+        .btn-control-color{
+            width: 450px;
+            margin-top: 50px;
+          }
+          button{
+            width: 450px;
+            margin: 40px;
+            height: 50px;
+            border: none;
+            color: #fff;
+          
+          }
+          button:nth-child(1){
+            width: 50px;
+            border-radius: 50%;
+            background-color: #f47fc7;
+          }
+          button:nth-child(2){
+            width: 50px;
+            border-radius: 50%;
+            background-color: #7ff4ac;
+          }
+          button:nth-child(3){
+            width: 50px;
+            border-radius: 50%;
+            background-color: #7fc7f4;
+          }
+          
+       </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <div class="banner" id="it">
+      <div class="container">
+          <div class="pic">
+              <img src="logo.png" alt="">
+          </div>
+          <div class="txt">
+            <a href="#" :style='styleColor' :title="styleColor.hint" :data="styleColor.hint">{{styleColor.text}}</a>
+          </div>
+          <div class="btn-control-color">
+            <button class="btn"  v-for='color in colors' @click='choice(color)'>{{ color.tag }}</button>
+         </div>
+      </div>
+  </div>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#it',
+            data: {
+              styleColor:{
+                  text:'Welcome to Vue.js',
+                  color: 'black',
+                  hint:'歡迎來到Vue.js'
+                }, 
+                current:'',              
+                colors: [
+                    {
+                        id: 'r',
+                        tag: '紅色',
+                        name: 'red',
+                    },
+                    {
+                        id: 'g',
+                        tag: '綠色',
+                        name:'green'
+                    },
+                    {
+                        id: 'b',
+                        tag: '藍色',
+                        name:'blue'
+                    }
+                ]
+            },
+            watch:{
+                current(){
+                    this.styleColor.color = this.current
+                }
+            },
+            methods: {
+                choice(color) {
+                    this.current = color.name
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
