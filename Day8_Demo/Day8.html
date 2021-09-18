@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day8</title>
+
+  <!-- Font Awesome 的 CDN -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"rel="stylesheet">
+
+  <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .header {
+            height: 8vh;
+            width: 100%;
+            background-color: #5c444a;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            width: 50px;
+            position: absolute;
+            left: 100px;
+            cursor: pointer;
+        }
+
+        .header .logo img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .header .info {
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #eeeed5;
+            position: absolute;
+            right: 100px;
+            cursor: pointer;
+        }
+
+        .header .info img {
+            width: 100%;
+        }
+
+        .header form {
+            height: 20px;
+            width: 280px;
+            display: flex;
+            padding: 6px 10px;
+            background-color: #fff;
+            border-radius: 20px;
+            position: absolute;
+            left: 200px;
+        }
+
+        .header form input,
+        .header form button {
+            border: none;
+            background-color: transparent;
+        }
+
+        .header form input {
+            width: 255px;
+            font-size: 16px;
+            color: #a18bad;
+        }
+
+        .header form input:focus {
+            outline: none;
+        }
+
+        .header form button {
+            width: 25px;
+            cursor: pointer;
+        }
+
+        .header form button:hover .fal {
+            color: tomato;
+        }
+
+        .main {
+            height: 92vh;
+            width: 100%;
+            background-color: #13ac77;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main .card {
+            width: 450px;
+            height: 650px;
+            background-color: #515250
+;
+            color: #eee;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: 300;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
+        }
+
+        .main .card .username {
+            color: #13ac77;
+            font-size: 22px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+
+
+<!-- HTML -->
+<div id="it">
+  <div class="header">
+      <div class="logo" @click="popup">
+          <img src="logo.png" alt="">
+      </div>
+      <form action="">
+          <input type="search" v-model="username">
+          <button @click.prevent='speak'><i class="fal fa-smile-plus"></i></button>
+      </form>
+      <div class="info" @click="popup">
+          <img src="woman.png" alt="">
+      </div>
+  </div>
+  <div class="main">
+      <div class="container">
+          <div class="card">
+              您好，<a class="username"> {{ defaultName }} </a> 今天要帶您來閱讀，《助得國水快此》。
+              康大客深而自。一速開反，爸等機天，拿心員香兒政完生利定男中心門的頭十位定一去的。
+              化孩手得那第電話你我子日，陽萬的生成……縣聽在己星園地形……中這文財其叫服香腳片陽手是論帶醫少上中必色以，期運經營不。
+              什不來國意說廣似有備程笑的論離遊但：於年來各拿，的都人命民了同本，多清客我，物銷時聲景這子破方解時然；
+              果稱年場坡雄少機：總再站那知得路子以班視個本公學背節是場車標去大走氣學：院陽手毛己，可我有善告後展這刻。
+              族中陽續國是正，場兒知說配……平盡用健賣一東進然響樹相學論另時？
+              布的而時視學經叫北以術包、對國元不的，下清明，說小市參分中不吃高配的度去生廠位氣斯孩，工適石模個對子輕愛！
+              然開達北呢突照受也解經；十歷子否之老說具生結有。為可們戰，道不書卻量足之線車王！
+              濟品前而意突構麼者，調性見，兒在外把個不心路所列務界打說角他通；
+              它在想流無投經香好林斯人課資公也口的黃地：又不主來少時化只：不那在十軍爭言來文就型沒政配覺雖西，
+              司同力長公沒員用美是公花要的市單痛東生所股去力時色海心活。便位上包，期起西了究不取如市的，中變大笑克？
+              起小我魚？經了很開獲一家友位格明界到傳子能世現。
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Vue的CDN -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#it',
+    data: {
+                username: '',
+                defaultName: '王小美',
+            },
+            methods: {
+                speak() {
+                    const temp = '王小美'
+                    if (this.username === '') {
+                        return this.defaultName = temp
+                    }
+                    this.defaultName = this.username
+                },
+                popup() {
+                    alert(`請在輸入框輸入您的大名`)
+                }
+            },
+    beforeCreate() {
+      console.log('beforeCreated')
+    },
+    created() {
+      console.log('created')
+    },
+    beforeMount() {
+      console.log('beforeMount')
+    },
+    mounted() {
+      console.log('mounted')
+    },
+    beforeUpdate() {
+      console.log('beforeUpdate')
+    },
+    updated() {
+      console.log('updated')
+    },
+    beforeDestroy() {
+      console.log('beforeDestroy')
+    },
+    Destroyed() {
+      console.log('Destroyed')
+    }
+  })
+</script>
+</body>
+
+</html>
