@@ -1,0 +1,47 @@
+[
+    {
+        "tool": "ASP.NET Core",
+        "introduction": "ASP.NET Core 是新一代的 ASP.NET，早期稱為 ASP.NET vNext，並且在推出初期命名為 ASP.NET 5，但隨著 .NET Core 的成熟，以及 ASP.NET 5 的命名會使得外界將它視為 ASP.NET 的升級版，但它其實是新一代從頭開始打造的 ASP.NET 核心功能，因此微軟宣布將它改為與 .NET Core 同步的名稱，即 ASP.NET Core。\nASP.NET Core 可運行於 Windows 平台以及非 Windows 平台，如 Mac OSX 以及 Ubuntu Linux 作業系統，是 Microsoft 第一個具有跨平台能力的 Web 開發框架。\n微軟在一開始開發時就將 ASP.NET Core 開源，因此它也是開源專案的一員，由.NET 基金會（頁面存檔備份，存於網際網路檔案館） (.NET Foundation) 所管理。",
+        "type": "Web Frameworks"
+    },
+    {
+        "tool": "React",
+        "introduction": "React（有時叫React.js或ReactJS），是一個為資料提供彩現為HTML視圖的開源JavaScript 庫。React視圖通常採用包含以自訂HTML標記規定的其他組件的組件彩現。React為程式設計師提供了一種子組件不能直接影響外層組件（data flows down）的模型，資料改變時對HTML文件的有效更新，和現代單頁應用中組件之間乾淨的分離。\n它由Facebook、Instagram和一個由個人開發者和企業組成的社群維護。根據JavaScript分析服務Libscore，React目前正在被Netflix、Imgur、Bleacher Report、Feedly、Airbnb、SeatGeek、HelloSign等很多網站的首頁使用。",
+        "type": "Web Frameworks"
+    },
+    {
+        "tool": "Vue.js",
+        "introduction": "Vue.js（簡稱為Vue）是一個用於建立使用者介面的開源JavaScript框架，也是一個建立單頁應用的Web應用框架。2016年一項針對JavaScript的調查表明，Vue有著89%的開發者滿意度。在GitHub上，該專案平均每天能收穫95顆星，為Github有史以來星標數第3多的專案。",
+        "type": "Web Frameworks"
+    },
+    {
+        "tool": "JavaScript",
+        "introduction": "JavaScript（通常縮寫為JS）是一種進階的、直譯的程式語言。JavaScript是一門基於原型、頭等函式的語言，是一門多範式的語言，它支援物件導向程式設計，指令式編程，以及函式語言程式設計。它提供語法來操控文字、陣列、日期以及正規表示式等，不支援I/O，比如網路、儲存和圖形等，但這些都可以由它的宿主環境提供支援。它已經由ECMA（歐洲電腦製造商協會）透過ECMAScript實作語言的標準化。它被世界上的絕大多數網站所使用，也被世界主流瀏覽器（Chrome、IE、Firefox、Safari、Opera）支援。\nJavaScript與Java在名字或語法上都有很多相似性，但這兩門程式語言從設計之初就有很大的不同，JavaScript的語言設計主要受到了Self（一種原型程式設計語言）和Scheme（一門函式語言程式設計語言）的影響。在語法結構上它又與C語言有很多相似（例如if條件語句、switch語句、while迴圈、do-while迴圈等)。\n在客戶端，JavaScript在傳統意義上被實作為一種解釋語言，但在最近，它已經可以被即時編譯（JIT）執行。隨著最新的HTML5和CSS3語言標準的推行它還可用於遊戲、桌面和行動應用程式的開發和在伺服器端網路環境執行，如Node.js。",
+        "type": "Markup Languages"
+    },
+    {
+        "tool": "HTML/CSS",
+        "introduction": "HTML 和CSS 是兩種不同的語言，HTML 處理內容，而CSS 定義了內容的呈現，也可以說是「網頁的設計」，兩者的分工是現代網路開發流行的設計原則(design principle) 之一。 英文稱之為「Separation of presentation and content」",
+        "type": "Markup Languages"
+    },
+    {
+        "tool": "SQL",
+        "introduction": "SQL是一種特定目的程式語言，用於管理關聯式資料庫管理系統（RDBMS），或在關係流資料管理系統（RDSMS）中進行流處理。\nSQL基於關係代數和元組關係演算，包括一個資料定義語言和資料操縱語言。SQL的範圍包括資料插入、查詢、更新和刪除，資料庫模式建立和修改，以及資料存取控制。儘管SQL經常被描述為，而且很大程度上是一種聲明式編程（4GL），但是其也含有程序式編程的元素。\nSQL是對埃德加·科德的關係模型的第一個商業化語言實現，這一模型在其1970年的一篇具有影響力的論文《一個對於大型共享型資料庫的關係模型》中被描述。儘管SQL並非完全按照科德的關係模型設計，但其依然成為最為廣泛運用的資料庫語言。 \n SQL在1986年成為美國國家標準學會（ANSI）的一項標準，在1987年成為國際標準化組織（ISO）標準。此後，這一標準經過了一系列的增訂，加入了大量新特性。雖然有這一標準的存在，但大部分的SQL代碼在不同的資料庫系統中並不具有完全的跨平台性。",
+        "type": "Markup Languages"
+    },
+    {
+        "tool": "MySQL",
+        "introduction": "MySQL原本是一個開放原始碼的關聯式資料庫管理系統，原開發者為瑞典的MySQL AB公司，該公司於2008年被昇陽微系統（Sun Microsystems）收購。2009年，甲骨文公司（Oracle）收購昇陽微系統公司，MySQL成為Oracle旗下產品。\nMySQL在過去由於效能高、成本低、可靠性好，已經成為最流行的開源資料庫，因此被廣泛地應用在Internet上的中小型網站中。隨著MySQL的不斷成熟，它也逐漸用於更多大規模網站和應用，比如維基百科、Google和Facebook等網站。非常流行的開源軟體組合LAMP中的「M」指的就是MySQL。\n但被甲骨文公司收購後，Oracle大幅調漲MySQL商業版的售價，且甲骨文公司不再支援另一個自由軟體專案OpenSolaris的發展，因此導致自由軟體社群們對於Oracle是否還會持續支援MySQL社群版（MySQL之中唯一的免費版本）有所隱憂，MySQL的創始人麥克爾·維德紐斯以MySQL為基礎，成立分支計劃MariaDB。而原先一些使用MySQL的開源軟體逐漸轉向MariaDB或其它的資料庫。例如維基百科已於2013年正式宣布將從MySQL遷移到MariaDB資料庫。\n MySQL的license現在分為免費的社群版與收費的標準版、企業版等。一般說來，如果在非開源專案中發布了MySQL，或者需要Oracle公司提供對MySQL的技術支援，或者使用MySQL的一些企業版工具或外掛程式，或者修改MySQL原始碼並作為閉源的軟體等等情形，需要購買商業版本。如果只是安裝並使用MySQL，甚至修改並使用MySQL，無論是否收費；或者軟體中不包含MySQL，軟體的使用者自行安裝MySQL；或者使用GPL協定的開源軟體產品中包含了MySQL，這些情形可能使用社群版MySQL。",
+        "type": "Databases"
+    },
+    {
+        "tool": "PostgreSQL",
+        "introduction": "PostgreSQL是開源的物件-關聯式資料庫資料庫管理系統，在類似BSD授權與MIT授權的PostgreSQL授權下發行。",
+        "type": "Databases"
+    },
+    {
+        "tool": "Microsoft SQL Server",
+        "introduction":"Microsoft SQL Server(微軟結構化查詢語言伺服器)是由美國微軟公司所推出的關聯式資料庫解決方案，最新的版本是SQL Server 2019，已在美國時間2019年11月3日發布。\n資料庫的內建語言原本是採用美國標準局和國際標準組織所定義的SQL語言，但是微軟公司對它進行了部分擴充而成為作業用SQL。\n幾個初始版本適用於中小企業的資料庫管理，但是近年來它的應用範圍有所擴充，已經觸及到大型、跨國企業的資料庫管理。",
+        "type": "Databases"
+    }
+]
