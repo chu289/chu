@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day10</title>
+    <!-- Font Awesome 的 CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            overflow-y: hidden;
+        }
+
+        .header {
+            height: 8vh;
+            width: 100%;
+            background-color: #f68c3d;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            width: 50px;
+            position: absolute;
+            left: 100px;
+            cursor: pointer;
+        }
+
+        .header .logo img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .header h2 {
+            height: 50px;
+            width: 280px;
+            display: flex;
+            padding: 6px 10px;
+            position: absolute;
+            left: 200px;
+            color: #004CC9;
+        }
+
+        .header .info {
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #eeeed5;
+            position: absolute;
+            right: 100px;
+            cursor: pointer;
+        }
+
+        .header .info img {
+            width: 100%;
+        }
+
+        .wrap form {
+            height: 20px;
+            width: 200px;
+            display: flex;
+            padding: 6px 10px;
+            border: 1px solid #3df68c;
+            border-radius: 100px;
+            position: absolute;
+            left: 80%;
+
+        }
+
+        .wrap select {
+            width: 200px;
+            background-color: transparent;
+            border-radius: 100px;
+            border: none;
+            color: #3da7f6;
+        }
+
+
+        .wrap select:focus {
+            outline: none;
+        }
+
+        .wrap {
+            display: flex;
+            height: 100vh;
+            background-color: #69678d;
+            color: #004CC9;
+            padding: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: 300;
+            box-shadow: 20px 20px 50px #c7bcc1;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .item {
+            height: 550px;
+            width: 340px;
+            background-color: #fff;
+            margin: 0 30px;
+            border: 1px solid #888;
+            text-align: center;
+            padding: 20px;
+            overflow-Y: scroll;
+        }
+
+        .item h2 {
+            border-bottom: 1px solid #878b81;
+            padding-bottom: .3em;
+            margin-bottom: .3em;
+        }
+
+        .item p {
+            line-height: 1.7;
+        }
+
+        .item::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        .item::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+
+        .item::-webkit-scrollbar-thumb {
+            background-color: #2355b5;
+            border-radius: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HTML -->
+    <div id="it">
+        <header class="header">
+            <div class="logo">
+                <img src="logo.png" alt="">
+            </div>
+            <h2>Technology</h2>
+            <div class="info">
+                <img src="woman.png" alt="">
+            </div>
+        </header>
+
+
+        <div class="wrap">
+            <form action="">
+                <select v-model="option">
+                    <option v-for="option in options">
+                        {{option}}
+                    </option>
+                </select>
+            </form>
+            <div class="container" v-for='introduces in output'>
+                <div class="item" v-for="introduce in introduces">
+                    <h2>{{introduce.tool}}</h2>
+                    <p>{{introduce.introduction}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Axios 的 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script type="text/javascript">
+        const introduces = []
+        const OPTIONS_TECH = "Web Frameworks, Markup Languages, Databases";
+        new Vue({
+            el: '#it',
+            data: {
+                introduces,
+                options: OPTIONS_TECH.split(', '),
+                option: 'Web Frameworks',
+            },
+            computed: {
+                output() {
+                    let introduces = this.introduces.slice().filter(introduce => introduce.type === this.option)
+                    let i, j, inforamtions = [], inforamtion = 3;
+                    for (i = 0, j = 0; i < introduces.length; i += inforamtion, j++) {
+                        inforamtions[j] = introduces.slice(i, i + inforamtion);
+                    }
+                    return inforamtions
+                    console.log(output)
+                }
+            },
+            mounted() {
+                axios.get('technology.json').then((response) => {
+                    this.introduces = response.data;
+                });
+            }
+
+        })
+    </script>
+</body>
+
+</html>
