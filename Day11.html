@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Day11</title>
+	<!-- Fontawesom 的 CDN -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			font-family: 'Noto Sans TC', sans-serif;
+		}
+
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: url('./silhouettes-6576684_1920.jpg');
+		}
+
+		.container {
+			height: 660px;
+			width: 460px;
+			background-color: #8df6d9;
+			color: #721429;
+			box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, .3);
+
+			position: relative;
+		}
+
+		.container h1 {
+			margin: 25px;
+			border-bottom: 1px solid #721429;
+			padding: 25px 0 15px 0;
+			text-align: center;
+		}
+
+		.container h1 small {
+			display: block;
+			font-size: 18px;
+			margin-top: 10px;
+		}
+
+		.container .content {
+			height: 40vh;
+			width: 85%;
+			background-color: rgba(255, 255, 255, .6);
+			margin: auto;
+			overflow-y: scroll;
+		}
+
+		.container .content::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #F5F5F5;
+		}
+
+		.container .content::-webkit-scrollbar {
+			width: 6px;
+			background-color: #F5F5F5;
+		}
+
+		.container .content::-webkit-scrollbar-thumb {
+			background-color: #f6d98d;
+			border-radius: 200px;
+		}
+
+		.container .content .item {
+			height: 5vh;
+			width: 100%;
+			background-color: rgba(141, 246, 217, .2);
+			line-height: 5vh;
+			display: flex;
+			position: relative;
+			font-size: 18px;
+		}
+
+		.container .content .item:nth-child(even) {
+			background-color: rgba(255, 255, 255, .6);
+		}
+
+		.container .content .txt {
+			position: absolute;
+			left: 25px;
+		}
+
+		.container .content .btn {
+			position: absolute;
+			right: 25px;
+		}
+
+		.container .content button {
+			background-color: transparent;
+			border: none;
+			color: #721429;
+			font-size: 18px;
+		}
+
+		.container .footer {
+			width: 70%;
+			height: 100px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: 40px auto;
+		}
+
+		.container .footer h2 {
+			font-size: 16px;
+			padding-bottom: 5px;
+		}
+
+		.container .footer form {
+			display: flex;
+		}
+
+		.container .footer input {
+			height: 20px;
+			width: 200px;
+			font-size: 18px;
+			padding: 10px;
+		}
+
+		.container .footer input:focus {
+			outline: 1.5px solid #721429;
+		}
+
+		.container .footer button {
+			margin-left: 3px;
+			padding: 10px;
+			color: #F5F5F5;
+			background-color: #721429;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<!-- HTML -->
+<body>
+	<div id="it">
+		<div class="container">
+			<h1>Todo List
+				<small>Record your to-do list</small>
+			</h1>
+			<div class="content">
+				<div class="item" v-for="item in items">
+					<div class="txt">{{ item }}</div>
+					<div class="btn"><button @click="deleteTask(item)"><i class="far fa-trash-alt"></i></button>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<h2>Add to the todo list</h2>
+				<form action="">
+					<input v-model="task" type="text">
+					<button @click="addTask">ADD ITEM</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Vue 的 CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#it',
+			data() {
+				return {
+					task: '',
+					items: JSON.parse(localStorage.getItem('items')) || []
+				}
+			},
+			watch: {
+				items: {
+					handler: 'saveTask',
+					deep: true
+				}
+			},
+			methods: {
+				addTask() {
+					if (this.task.trim().length == 0) {
+						alert('記得填寫代辦事項噢...')
+						return
+					}
+					console.log("task", this.task);
+					this.items.push(this.task)
+					this.task = ''
+				},
+				deleteTask(item) {
+					if (confirm('確定要刪除嗎？')) {
+						const index = this.items.indexOf(item)
+						if (index !== -1) {
+							this.items.splice(index, 1)
+						}
+					}
+				},
+				saveTask() {
+					localStorage.setItem('items', JSON.stringify(this.items))
+				}
+			},
+		})
+	</script>
+</body>
+
+</html>
