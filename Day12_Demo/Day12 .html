@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day12</title>
+  <!-- Fontawesom 的 CDN -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- boxicons 的 CDN -->
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+
+  <style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			font-family: 'Noto Sans TC', sans-serif;
+      box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: url('beach-6292382_1920.jpg');
+		}
+
+    .wrap{
+      display: flex;
+      width: 630px;
+      background-color: #fff;
+      padding: 20px;
+      color: #761A1D;
+    }
+		.container {
+      height: 550px;
+      width: 300px;
+      background-color: #fff;
+      margin: 10px;
+      display: flex;
+      transition: .3s;
+		}
+    .left {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .left .top{
+      height: 242px;
+      width: 100%;
+      background-color: #8a91ed;
+      border: 1px solid #C4F6F2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      transition: .3s;
+    }
+    .left .top .time{
+      width: 220px;
+      text-align: center;
+      background-color: #fff;
+      padding: 15px;
+      transition: .3s;
+    }
+    .left .top .greeting{
+      color: #fff;
+      margin-top: 30px;
+      padding: 0 15px;
+      font-size: 22px;
+    }
+    .left .middle{
+      height: 242px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .left .middle .func1{
+      height: 100px;
+      width: 100%;
+      border: 1px solid #C4F6F2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .3s;
+    }
+    .left .middle .bx{
+      font-size: 30px;
+      padding: 0 20px;
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .left .middle .bx:hover{
+      color: #ed8a91;
+    }
+    .left .middle .func2{
+      height: 142px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border: 1px solid #C4F6F2;
+      transition: .3s;
+    }
+
+    .left .footer{
+      height: 45px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(196,246,242, .5);
+      margin-top: 10px;
+      font-size: 12px;
+      transition: .3s;
+    }
+
+
+
+
+
+
+
+    .right {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .right .top{
+      height: 121px;
+      width: 100%;
+      font-size: 13px;
+      border: 1px solid #C4F6F2;
+      transition: .3s;
+    }
+    .right .top h1{
+      padding: 15px;
+    }
+
+
+    .right .middle{
+      height: 363px;
+      width: 100%;
+      border: 1px solid #C4F6F2;
+      margin-top: 10px;
+      transition: .3s;
+    }
+
+    .right .middle .content {
+			height: 100%;
+			width: 100%;
+			margin: auto;
+			overflow-y: scroll;
+		}
+
+		.right .middle .content::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #F5F5F5;
+      transition: .3s;
+		}
+
+		.right .middle .content::-webkit-scrollbar {
+			width: 6px;
+			background-color: #F5F5F5;
+		}
+
+		.right .middle .content::-webkit-scrollbar-thumb {
+			background-color: rgba(196,246,242, .5);
+			border-radius: 200px;
+      transition: .3s;
+		}
+
+		.right .middle .content .item {
+			height: 5vh;
+			width: 100%;
+			line-height: 5vh;
+			display: flex;
+			position: relative;
+			font-size: 18px;
+      font-weight: 300;
+		}
+
+		.right .middle .content .item:nth-child(even) {
+			background-color: rgba(196,246,242, .5);
+      transition: .3s;
+		}
+
+		.right .middle .content .txt {
+			position: absolute;
+			left: 25px;
+		}
+
+		.right .middle .content .btn {
+			position: absolute;
+			right: 25px;
+		}
+
+		.right .middle .content button {
+			background-color: transparent;
+			border: none;
+			color: #761A1D;
+			font-size: 18px;
+      cursor: pointer;
+      transition: all .3s;
+		}
+    .right .middle .content button:hover{
+      color: #ed8a91;
+    }
+
+
+    .right .footer{
+      height: 45px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      border: 1px solid #C4F6F2;
+    }
+
+
+
+
+    
+    .right .footer button{
+      height: 100%;
+      width: 100%;
+      background-color: #8a91ed;
+      color: #fff;
+      font-weight: 1000;
+      font-size: 20px;
+      border: none;
+      transition: all .3s;
+      cursor: pointer;
+    }
+    .right .footer button:hover{
+      background-color: #ed8a91;
+    }
+    
+
+
+
+    .wrap.active{
+      background-color: rgba(120,56,57, 1);
+      color: #fff;
+    }
+    .wrap.active .container{
+      background-color: rgba(120,56,57, 1);
+    }
+    .wrap.active .left .top{
+      background-color: #7e7473;
+      border: 1px solid #7e7473;
+    }
+    .wrap.active .left .top .time{
+      background-color: #7b5656;
+
+    }
+    .wrap.active .left .middle .func1{
+      border: 1px solid #7e7473;
+      background-color:#7b5656;
+    }
+    .wrap.active .left .middle .bx{
+      transition: .3s;
+    }
+    .wrap.active .left .middle .bx:hover{
+      color: #ed8a91;
+    }
+    .wrap.active .left .middle .func2{
+      border: 1px solid #7e7473;
+      background-color:#7b5656;
+    }
+    .wrap.active .left .footer{
+      background-color: #7e7473;
+      border: 1px solid #7e7473;
+    }
+    .wrap.active .right .top{
+      background-color: #7b5656;
+      border: 1px solid #7e7473;
+    }
+    .wrap.active .right .middle{
+      background-color: #7b5656;
+      border: 1px solid #7e7473;
+    }
+    .wrap.active .right .middle .content button {
+      color: #fff;
+		}
+    .wrap.active .right .middle .content button:hover{
+      color: #761A1D;
+    }
+    .wrap.active .right .middle .content .item:nth-child(even) {
+			background-color: #7e7473;
+		}
+		.wrap.active .right .middle .content::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #7e7473;
+		}
+
+		.wrap.active .right .middle .content::-webkit-scrollbar-thumb {
+			background-color: #761A1D;
+			border-radius: 200px;
+		}
+    .wrap.active .right .footer button{
+      background-color: #7e7473;
+    }
+    .wrap.active .right .footer button:hover{
+      background-color: #ed8a91;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 98;
+      background-color: rgba(255, 255, 255, .4);
+    }
+  
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 99;
+  
+      width: 100%;
+      max-width: 400px;
+      background-color: #FFF;
+      border-radius: 16px;
+  
+      padding: 25px;
+    }
+
+    p {
+      color: #761A1D;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+  
+    .modal{
+      height: 250px;
+    }
+    .modal form{
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+    .modal .btn-group{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .modal input{
+      border: 1px solid #761A1D;
+      border-radius: 8px;
+      height: 40px;
+      padding: 15px;
+    }
+    .modal button{
+      margin: 30px;
+      height: 40px;
+      width: 75px;
+      border: none;
+      border-radius: 8px;
+      background-color: #761A1D;
+      color: #FFF;
+      cursor: pointer;
+    }
+  
+
+
+  
+  
+      .fade-enter-active,
+      .fade-leave-active {
+        transition: opacity 0.5s;
+      }
+      .fade-enter,
+      .fade-leave-to {
+        opacity: 0;
+      }
+      .slide-enter-active,
+      .slide-leave-active {
+        transition: transform 0.5s;
+      }
+      .slide-enter {
+        transform: translateX(-100vw) translateY(-50%);
+      }
+      .slide-leave-to {
+        transform: translateX(100vw) translateY(-50%);
+      }
+
+	</style>
+ 
+
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id='it'>
+    <div class="wrap isActive" :class='{ active : isActive}'>
+      <div class="left container">
+        <div class="box top">
+          <h1 class="time">{{ time }}</h1>
+          <h1 class="greeting">{{ greeting }}</h1>
+        </div>
+        <div class="box middle">
+          <div class="func1">
+            <i class='bx bx-moon isActive' :class='{ active : isActive}' @click="DarkorLight"></i>
+            <i @click="welcome" class='bx bx-bell'></i>
+          </div>
+          <div class="func2">
+            <h1>{{ countItems }} To do items</h1>
+          </div>
+        </div>
+        <div class="box footer">
+          Copyright &copy; 2021 Chu
+        </div>
+      </div>
+      <div class="right container">
+        <div class="box top">
+          <h1>{{ date }}</h1>
+        </div>
+        <div class="box middle">
+          <div class="content">
+            <div class="item" v-for="item in items">
+              <div class="txt">{{ item }}</div>
+              <div class="btn"><button @click="handleDelete(item)"><i class="far fa-trash-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box footer">
+          <button class="button" @click="handleAdd">ADD ITEM</button>
+        </div>
+      </div>
+    </div>
+
+    <transition name="fade" appear>
+      <!-- <div class="modal-overlay" v-if="showOverlay" @click="close"></div> -->
+      <div class="modal-overlay" v-show="showOverlay" @click="close"></div>
+    </transition>
+    <transition name="slide" appear>
+      <div class="modal addDialog-modal" v-if="addDialog & showOverlay">
+        <p>Add to the todo list</p>
+        <form>
+          <input type="text" v-model="task">
+          <div class="btn-group">
+            <button class="button" @click="addTask">Confirm</button>
+            <button class="button" @click="close">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal deleteDialog-modal" v-if="deleteDialog & showOverlay">
+        <p>Do you want to delete {{ deleteItem }}</p>
+        <div class="btn-group">
+          <button class="button" @click="deleteTask">Confirm</button>
+          <button class="button" @click="close">Cancel</button>
+      </div>
+      </div>
+    </transition>
+  </div>
+
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#it',
+      data() {
+        return {
+          showOverlay: false,
+          addDialog: false,
+          deleteDialog:false,
+          isActive: false,
+          time: '',
+          hours: '',
+          month: '',
+          day: '',
+          year: '',
+          months : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          task: '',
+          deleteIndex: '',
+          deleteItem: '',
+					items: JSON.parse(localStorage.getItem('items')) || []
+        }
+      },
+      created() {
+        this.getNow()
+      },
+			watch: {
+        'showOverlay': function() {
+          if(this.showOverlay === false){
+            this.deleteDialog = false
+            this.addDialog = false
+          }
+        },        
+        items: {
+					handler: 'saveTask',
+					deep: true
+				},
+			},
+      computed:{
+        countItems() {
+          return this.items.length
+        },
+        greeting() {
+          if ( this.hours < 11 ) {
+            return 'GOOD　MORNING';
+          }if ( this.hours > 17 ) {
+            return 'GOOD　EVENING';
+          } else {
+            return 'GOOD　AFTERNOON';
+          }
+        },
+        date() {
+          return this.months[this.month] + " " + this.day + ", " + this.year
+        }
+      },
+			methods: {
+        handleAdd(){
+          this.addDialog = true
+          this.showOverlay = true
+        },
+        addTask () {
+          if (this.task.trim().length == 0) {
+						alert('記得填寫代辦事項噢...')
+						return
+					}
+
+					this.items.push(this.task)
+          this.addDialog = false
+          this.showOverlay = false
+          this.task = ''
+        },
+        handleDelete(item){
+          this.deleteItem = item
+          this.deleteIndex = this.items.indexOf(item)
+
+          this.deleteDialog = true
+          this.showOverlay = true
+        },
+        deleteTask() {   
+					if (this.deleteIndex !== -1) {
+						this.items.splice(this.deleteIndex, 1)
+					}
+
+          this.deleteDialog = false
+          this.showOverlay = false
+				},
+        close() {
+          this.showOverlay = false
+          this.deleteDialog = false
+          this.addDialog = false
+        },
+        saveTask() {
+					localStorage.setItem('items', JSON.stringify(this.items))
+				},
+        getNow() {
+          const today = new Date();
+          this.time = today.toLocaleString('en-TW', {hour: 'numeric', minute: 'numeric', hour12: true})
+          this.hours = today.getHours()
+          this.month = today.getMonth();
+          this.day = today.getDate();
+          this.year = today.getFullYear();          
+        },
+        welcome() {
+          alert(`Hello Welcome to my Todo List Project~`)
+        },
+        DarkorLight() {
+          this.isActive = (this.isActive === false) ? this.isActive = true : this.isActive = false
+        }
+			},
+    })
+  </script>
+
+</html>
