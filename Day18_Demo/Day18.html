@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day18</title>
+
+    <!-- Font Awesome 的 CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        
+        <style type="text/css">
+            * {
+              padding: 0;
+              margin: 0;
+              list-style: none;
+            }
+            html,body{
+                height: 100%;
+                width: 100%;
+                background: url('field-6558125_1920.jpg');
+            }
+            .wrap{
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .wrap .container{ 
+                display: flex;
+            }
+            .wrap .box{
+                position: relative;
+                width: 200px;
+                height: 200px;
+                background-color: #FFFFD1;
+                color: #6B98BA;
+                margin: 0 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+            }
+            .wrap .box .title{
+                position: absolute;
+                top: 35px;
+                font-size: 26px;
+            }
+            .wrap .box button{
+                position: absolute;
+                width: 200px;
+                height: 50px;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                font-size: 25px;
+                cursor: pointer;
+                transition: .3s;
+                border: none;
+                border-radius: 16px;
+            }
+            .wrap .box button:hover{
+                color: #e9f0cd;
+                background-color: #6B98BA;
+            }
+            .wrap .box .inc{
+                right: -135px;
+                transform: rotate(90deg);
+                background-color: #98ba6b;
+                color: #FFFFD1;
+            }
+            .wrap .box .dec{
+                left: -135px;
+                transform: rotate(90deg);
+                background-color: #ba6b98;
+                color: #FFFFD1;
+            }
+            .wrap .box .dec i{
+                transform: rotate(90deg);
+            }
+            .wrap .box .count{
+                font-size: 50px;
+                margin-top: 15px;
+            }
+
+        </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <div class="wrap" id='it'>
+        <div class="container">
+            <div class="box">
+                <h2 class="title">Hours</h2>
+                <component-count :count="hours" :inccount="incHours" :deccount="decHours"></component-count>
+            </div>
+            <div class="box">
+                <h2 class="title">Minutes</h2>
+                <component-count :count="minutes" :inccount="incMintues" :deccount="decMintues"></component-count>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue template 掛載點 -->
+    <template id='componentCount'>
+        <div>
+            <h2 class="count"> {{count}} </h2>
+            <button class="inc btn" @click="inccount" > <i class="fas fa-plus"></i> </button>
+            <button class="dec btn" @click="deccount"> <i class="fas fa-minus"></i> </button>
+        </div>
+    </template>
+    
+  <!-- Vue 的 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script type="text/javascript">
+        Vue.component('component-count', {
+            props:['count','inccount', 'deccount'],
+            template: '#componentCount'
+        })
+        new Vue({
+            el: '#it',
+            data: {
+                hours: 0,
+                minutes: 0,
+            },
+            mounted() {
+                console.log(this.hours);                
+            },
+            watch: {
+                'hours': function(){
+                    if(this.hours === 24){
+                        this.hours =  0
+                    }else if(this.hours < 0){
+                        this.hours = 23
+                    }
+                },
+                'minutes': function() {
+                    if(this.minutes === 60){
+                        this.minutes = 0
+                    }else if(this.minutes < 0){
+                        this.minutes = 59
+                    }
+                }
+            },
+            methods: {
+                incHours() {
+                    this.hours ++
+                },
+                decHours() {   
+                    this.hours --  
+                },
+                incMintues() {
+                    this.minutes ++
+                },
+                decMintues() {
+                    this.minutes --
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
