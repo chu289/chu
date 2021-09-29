@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day19</title>
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- boxicons 的 CDN -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        body {
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://picsum.photos/1920/1080?random=10');
+        }
+
+        .book .turn-btn {
+            display: none;
+        }
+
+        .book img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .book {
+            display: flex;
+        }
+
+        .book #cover {
+            width: 350px;
+            height: 550px;
+            background-color: #fff;
+        }
+
+        .book .flip-book {
+            width: 350px;
+            height: 550px;
+            position: relative;
+            perspective: 1500px;
+        }
+
+        .book .flip {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: .5s;
+            color: #000;
+        }
+
+        .book p {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .book .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #eeee;
+            box-sizing: border-box;
+            padding: 0 13px;
+            box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5) 0 2px 5px rgba(0, 0, 0, .5);
+        }
+
+        .book .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            background-color: #fff;
+        }
+
+        .book .next-btn {
+            position: absolute;
+            bottom: 13px;
+            right: 13px;
+            cursor: pointer;
+            color: #004fd9;
+            font-size: 30px;
+            transform: rotate(90deg);
+        }
+
+        .book .back-btn {
+            position: absolute;
+            bottom: 13px;
+            right: 13px;
+            cursor: pointer;
+            color: #ff921e;
+            font-size: 30px;
+            transform: rotate(-90deg);
+        }
+
+        .book #p1 {
+            z-index: 3;
+        }
+
+        .book #p2 {
+            z-index: 2;
+        }
+
+        .book #p3 {
+            z-index: 1;
+        }
+
+        .book #c1:checked~.flip-book #p1 {
+            transform: rotateY(-180deg);
+            z-index: 1;
+        }
+
+        .book #c2:checked~.flip-book #p2 {
+            transform: rotateY(-180deg);
+            z-index: 2;
+        }
+
+        .book #c3:checked~.flip-book #p3 {
+            transform: rotateY(-180deg);
+            z-index: 3;
+        }
+
+        .book .container {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .book .container h2 {
+            margin: 10px 0;
+        }
+
+        .book .container p {
+            line-height: 1.8;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- HTML -->
+    <div class="book" id='it'>
+        <input type="checkbox" class="turn-btn" id="c1">
+        <input type="checkbox" class="turn-btn" id="c2">
+        <input type="checkbox" class="turn-btn" id="c3">
+        <div id="cover">
+            <img src="train-4734126_1920.jpg" alt="">
+        </div>
+        <div class="flip-book">
+            <div class="flip" id="p1">
+                <div class="back">
+                    <img src="bremen-6557996_1920.jpg" alt="">
+                    <label class="back-btn" for="c1"><i class='bx bx-upvote'></i></label>
+                </div>
+                <div class="front">
+                    <component-lorem :loremtitle="pageOne.loremtitle" :lorem="pageOne.lorem"></component-lorem>
+                    <label class="next-btn" for="c1"><i class='bx bx-upvote'></i></label>
+                </div>
+            </div>
+
+            <div class="flip" id="p2">
+                <div class="back">
+                    <img src="bridge-6576027_1920.jpg" alt="">
+                    <label class="back-btn" for="c2"><i class='bx bx-upvote'></i></label>
+                </div>
+            </div>
+
+            <div class="flip" id="p2">
+                <div class="back">
+                    <img src="bridge-6576027_1920.jpg" alt="">
+                    <label class="back-btn" for="c2"><i class='bx bx-upvote'></i></label>
+                </div>
+                <div class="front">
+                    <component-lorem :loremtitle="pageTwo.loremtitle" :lorem="pageTwo.lorem"></component-lorem>
+                    <label class="next-btn" for="c2"><i class='bx bx-upvote'></i></label>
+                </div>
+            </div>
+
+            <div class="flip" id="p3">
+                <div class="back">
+                    <img src="pexels-ann-h-2889685.jpg" alt="">
+                    <label class="back-btn" for="c3"><i class='bx bx-upvote'></i></label>
+                </div>
+                <div class="front">
+                    <component-lorem :loremtitle="pageThree.loremtitle" :lorem="pageThree.lorem"></component-lorem>
+                    <label class="next-btn" for="c3"><i class='bx bx-upvote'></i></label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Vue template 掛載點 -->
+    <template id="componentLorem">
+        <div class="container">
+            <h2 v-text="loremtitle"></h2>
+            <p v-text="lorem"></p>
+        </div>
+    </template>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript">
+
+        Vue.component('component-lorem', {
+            props: ['loremtitle', 'lorem'],
+            template: '#componentLorem'
+        })
+
+        new Vue({
+            el: '#it',
+            data() {
+                return {
+                    pageOne: {
+                        loremtitle: '時地等其父',
+                        lorem: '區醫專人人你有原清作。中認票龍名家，結調減不包日小，學樹香是我好樣地，商破資公，上因有多傷了。出以己，了覺算的麼。地經積氣頭師；花四不，或日麼知少思，兒室因有得司些過體。連善調據評什力話下，香問都思的影完影於地共會靈臺上重下慢此電開一術導也一而他熱飯如們便出；法他看林發兒：房定飛子心著業病灣發太其沒便外北去經果黃們英，動得論國什出，他家北目果注生千們你不必手小，小你動子安意中為後關集傳不，我本變著者民個；知職不木畫雖是景整見很上告明，進去金，必那把……接文後如自體廠期活如可出的軍慢現，位雖物星千吃……的現都高；在待一德任美收約為建。輕事命藝論那病甚個沒只顯之了一庭父評是的；大遊客信影的！一同他的然有？家體遠神是連子；公基興常她子到，問光有麼國為文去笑多！麼先而式是，只作外據子世種……太嗎紙，座的包易相是員消不母看原晚太了天我為學聞去還。'
+                    },
+                    pageTwo: {
+                        loremtitle: '不年如等陽第室本夜',
+                        lorem: '治我族舉前策全大人。面眾調，點說到童現條，向感起中請氣題風南、色加經，新個說遠的算站特了的，業自當格的，保對華球的發手所中改是通要重突通員調於注白到員死、洲許地的風收正時：才館目麼大許出相家可同發白越的！代運機要世量內團要……支著子因政生上關賽門決顧善英小引地花元化不地？寫他營與學，平們局外早。關面選洋女實長去。士不企：頭著發？的活排故好大然微造存問土種保知，想具日，人定子於最我有動放人來止想在來年動。點情力的身開千香計光好此企人環人。場到天十錢；臉實我之入然一常星都！頭由灣。一長營海河；有大不是把天地資；三起神新原認部，的供計清下，向增力子我不。人且了以，希驚面民文的交：出曾樂倒深人資時，身眾臺來進該我者爭遊直都的備生……多了印那不以輪候樂待絕身戰就件農，否白山是邊生運計常林散衣經山山的形益加者獎成一球一科行人喜學那的的園去。'
+                    },
+                    pageThree: {
+                        loremtitle: '一球農是況面少室政',
+                        lorem: '造片最；並色年聲金要因蘭兩長高等寫管？參給洋未立會操錢裡……位因引是愛，很花保視組是團這業了，條經心過大文岸此心方身是天，臺機會不中參上委劇子是兒影此為，我一護己發市聲人類組到古？長故陸行。來許頭去大生念可大常代如差多是！校源火道生人位認球畫，詩吃不下用重濟吃。百格工聽以錢備的態雄童作然院終大，的們化股商自本發多裡麼才園每府竟獲自！關後料了舉長岸史漸，他一石為加開的，風不腦衣存，時小資！觀許行時今，精父總明經其父氣：保對氣是過？想清機公結為來望大司對們腳想先那今廠小去他人花清入、畫來電由我新長方研色體期這提民、公史該大！這計對由個、領洲學獲開康是雖精一育。過建少！感以用一轉結這處然力流有情傳……期在夫次求人路積正。及家讀樣語你；星件人三下怎亞常國，笑是的地對。道術比然自在石由看由先阿經界本合美成什、做意書他次地站別有主他風快再是我充。'
+                    }
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
