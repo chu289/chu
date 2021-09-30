@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day20</title>
+    	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        .wrap{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(70deg, #6e3923 0%, #f5afae 100%);
+        }
+        .item{
+            font-size: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slot{  
+            height: 100%;
+            width: 50%;
+            color: #734d3e;
+        }
+        .origin{
+            height: 100%;
+            width: 50%;
+            color: #1c5253;
+        }
+        .item .clock {
+            margin-top: 100px;
+            font-size: 2em;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .item .title{
+            position: absolute;
+            top: -100px;
+            font-size: .25em;
+            text-transform: uppercase;
+            letter-spacing: .4em;
+        }
+        .slot .title{
+            color: #92cae2;
+        }
+        .origin .title{
+            color: #1c5253;
+        }
+        .item .clock span{
+            margin:  0 .3em;
+            padding: .2em;
+            text-align: center;
+  
+        }
+        .item .clock span:not(.title){
+            -webkit-box-reflect: below 1px linear-gradient(
+                transparent, #0004
+            );
+        }
+        .slot .clock h2{
+            font-size: .2em;
+            border-top: 1px solid #734d3e;
+        }
+        .slot .clock .hours,
+        .slot .clock .minutes{
+            background-color: #cae292;
+        }
+        .slot .clock .seconds{
+            background-color: #e292ca;
+        }   
+
+        .origin .clock h2{
+            font-size: .2em;
+            border-top: 1px solid #1c5253;
+        }
+        .origin .clock .hours,
+        .origin .clock .minutes{
+            background-color: #f4f5ae;
+        }
+        .origin .clock .seconds{
+            background-color: #afaef5;
+        }      
+    </style>
+
+</head>
+
+<body>
+    <!-- HTML -->
+      <div class="wrap" id='it'>
+        <div class="item slot ">
+            <clock-structure >
+                <template v-slot:title>
+                    <span class="title">
+                        {{ title }}
+                    </span>
+                </template>
+                <template v-slot:hours>
+                    <span class="hours">
+                        {{ hours }}
+                        <h2>hours</h2>
+                    </span>
+                </template>
+                <template v-slot:minutes>
+                    <span class="minutes">
+                        {{ minutes }}
+                        <h2>minutes</h2>
+                    </span>
+                </template>
+                <template v-slot:seconds>
+                    <span class="seconds">
+                        {{ seconds }}
+                        <h2>seconds</h2>
+                    </span>
+                </template>
+            </clock-structure>
+        </div>
+        <div class="item origin">
+            <clock-structure></clock-structure>
+        </div>
+      </div>
+
+    <!-- Vue template 掛載點 -->
+    <template id="componetClock">
+        <div class="clock">
+            <slot name="title">
+                <span class="title">
+                    {{title}}
+                </span>
+            </slot>
+            <slot name="hours">
+                <span class="hours">
+                    {{ hours }}
+                    <h2>hours</h2>
+                </span>
+            </slot>
+            <slot name="minutes">
+                <span class="minutes">
+                    {{ minutes }}
+                    <h2>minutes</h2>
+                </span>
+            </slot>
+            <slot name="seconds">
+                <span class="seconds">
+                    {{ seconds }}
+                    <h2>seconds</h2>
+                </span>
+            </slot>
+        </div>
+    </template>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script type="text/javascript">
+    Vue.component('clock-structure', {
+        data(){
+            return{
+                hours: 'hours',
+                minutes: 'minutes',
+                seconds: 'seconds',
+                title: 'The time is origin time'
+            }
+        },
+        created() {
+            this.getNow()
+        },
+        methods: {
+            getNow() {
+                const time = new Date();
+                this.today = time.toLocaleString('en-TW', { hour: 'numeric', minute: 'numeric', seconds: 'numeric' })
+                this.hours = (time.getHours() < 10 ? '0' + time.getHours() : time.getHours());
+                this.minutes = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+                this.seconds = (time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds());
+            }
+        },
+        template: '#componetClock'
+    })
+
+        new Vue({
+                el: '#it',
+                data() {
+                    return {
+                        hours: (new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours()),
+                        minutes: (new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()),
+                        seconds: (new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()),
+                        title: 'This time is slot time'
+                    }
+                },
+                mounted() {
+                    var _this = this
+                    this.timer = setInterval(function() {
+                        const time = new Date();
+                        _this.hours = (time.getHours() < 10 ? '0' + time.getHours() : time.getHours());
+                        _this.minutes = (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes());
+                        _this.seconds = (time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds());
+                    }, 1000),
+
+                    this.patchZero(this.minutes, 2)
+                },
+                beforeDestroy() {
+                    if(this.timer) {
+                        clearInterval(this.timer)
+                    }
+                }
+            })
+    </script>
+</body>
+
+</html>
