@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day21</title>
+
+    <!-- Font Awesome 的 CDN -->
+    <link  rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    
+        <style type="text/css">
+            * {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                font-family: 'Noto Sans TC', sans-serif;
+            }
+            html,body{
+                height: 100%;
+                width: 100%;
+                background-image: linear-gradient(160deg, #fdcf80 0%, #cf99dd 50%, #c4fd8f 100%);
+            }
+            .wrap{
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card{
+                height: 650px;
+                width: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+            }
+            .card .content{
+                height: 650px;
+                display: flex;
+                flex-direction: column;
+                z-index: 2;
+            }
+            .card .content .pic {
+                margin-top: 50px;
+                height: 300px;
+                width: 100%;
+            }
+            .card .content .pic img{
+                height: 100%;
+                width: 100%;
+                vertical-align: middle;
+            }
+            .card .content:not(.three) .txt{
+                height: 300px;
+                width: 100%;
+                padding: 15px;
+                box-sizing: border-box;
+                line-height: 1.7;
+            }
+            .card .content h3{
+                text-align: center;
+                position: relative;
+            }
+            .card .content .edit-btn{
+                position: absolute;
+                top: 365px;
+                right: 5px;
+                color: #fb208a;
+                font-size: 18px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            .card .content input{
+                width: 100%;
+                height: 35px;
+                box-sizing: border-box;
+                background-color: transparent;
+                border: 2px solid #829771;
+                color: #7913df;
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+                font-weight: 700;
+            }
+            .card .content textarea{
+                width: 100%;
+                height: 230px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                background-color: transparent;
+                border: 2px solid #829771;
+                color: #7913df;
+                padding: 15px;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 1.7;
+            }
+            .card .content .save-btn{
+                height: 35px;
+                width: 100%;
+                background-color: #fb9120;
+                color: #7913df;
+                border: 2px solid #829771;
+                font-size: 20px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+            .card nav{
+                position: absolute;
+                right: -60px;
+                top: 50px;
+                display: flex;
+                flex-direction: column;
+
+            }
+            .card nav a{
+                text-decoration: none;
+                padding: 10px;
+                margin: 10px -9px;
+                border-radius: 0 8px 8px 0;
+                font-weight: 300;
+            }
+            .card nav a:nth-child(1){
+                background-color: rgba(251,160,3, .5);
+                color: #0050ed;
+            }
+            .card nav a:nth-child(2){
+                background-color: rgba(160,52,188, .5);
+                color: #1c1c1c;
+            }
+            .card nav a:nth-child(3){
+                background-color: rgba(138,251,32, .5);
+                color: #7913df;
+            }
+
+
+            .card .one{
+                background-color: rgba(251,160,3, .5);
+            }
+            .card .one .txt{
+                background-color: #fba003;
+                color: #0050ed;
+            }
+
+            .card .two{
+                background-color: rgba(160,52,188, .5);
+            }
+            .card .two .txt{
+                background-color: #a034bc;
+                color: #1c1c1c;
+            }
+            
+            .card .three{
+                background-color: rgba(138,251,32, .5);
+            }
+            .card .three .txt:not(.edit){
+                background-color: #8afb20;
+                color: #7913df;
+                height: 300px;
+                padding: 15px;
+                line-height: 1.7;
+                overflow: auto;
+            }
+
+            .card .three .txt:not(.edit)::-webkit-scrollbar {
+                display: none;
+            }            
+
+            
+
+        </style>
+
+</head>
+
+<body>
+    <!-- HTML -->
+    <div id='it' class="wrap">
+        <div class="card">
+            <keep-alive>
+                <component :is='currentTabComponent'></component>
+            </keep-alive>
+            
+            <nav>
+                <a href="#" @click='currentTabComponent="Tab1"'>Demo1</a>
+                <a href="#" @click='currentTabComponent="Dynamic1"'>Demo2</a>
+                <a href="#" @click='currentTabComponent="Dynamic2"'>Demo3</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Vue template 掛載點 -->
+    <template id="componentTab">
+        <div class="content one">
+            <div class="pic">
+                <img src="triangles-6567058_1920.png" alt="">
+            </div>
+            <div class="txt">
+                <h3>是邊舉強顯家種</h3>
+                <p>上家事常，作科成經們華竟但手……這反人……使多時有北質舞動這西命獎新：人教來間果美石們蘭輕如面會極開國格過向時現治：晚我意為的定到真的加！的辦畫們兒十一戲便令。親劇原調層；影好全助間積李條懷改一陽步還力樓好易關輕，食員大人獲名，要思行和像方夫。
+
+                </p>
+            </div>
+        </div>
+    </template>
+    <template id="componentTab2">
+        <div class="content two">
+            <div class="pic">
+                <img src="city-4051537_1920.jpg" alt="">
+            </div>
+            <div class="txt">
+                <h3>世足信演出實有工一我陽的</h3>
+                <p>會媽古好點的陸前而代用本我不，車港色；態爾倒……接少外定然數不這開他安今不時斯界物素，到些地難報不面一經大清元少動的集無為優會界說到向前：集人子品要加教度：特臺們標得聯好必；物畫文過……領現青心的解我我歌化歡就路中先解不應油似平任員上人計滿。</p>
+            </div>
+        </div>
+    </template>
+    <template id="componentTab3">
+        <div class="content three">
+            <div class="pic">
+                <img src="coffee-2511065_1920.jpg" alt="">
+            </div>
+            <div class="txt" v-if="edit === false">
+                <h3> {{ loremTitle }} </h3>
+                <p> {{ lorem }} </p>
+                <button class="edit-btn" @click="editLorem"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="txt edit" v-if="edit === true">
+                <input type="text" v-model="loremTitle">
+                <textarea v-model="lorem"></textarea>
+                <button class="save-btn" @click="saveLorem"><i class="fal fa-save"></i></button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Vue 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script type="text/javascript">
+        const Dynamic1 = {
+            template: '#componentTab2'
+        }
+
+        const Dynamic2 = {
+            props: {
+                loremTitle: {
+                    type:String,
+                    default: '我之題情代我的前完光兒'
+                },
+                lorem: {
+                    type:String,
+                    default:'了麼議造十明有有不學文種皮生次生叫上腳萬中大也只跟有備這日是善。來品倒見、令是王漸月進當係臺：多我有，子兩說教很更時聲她轉張與亞子長重，發北別而吃工大清提影個格個，然立夫到國不的來濟特委片些天，教簡利他一中了？心者生子西文花師的車。'
+                },
+                edit: {
+                    type:Boolean,
+                    default:false
+                }
+            },
+            methods: {
+                editLorem() {
+                    this.edit = true
+                },
+                saveLorem() {
+                    this.loremTitle = this.loremTitle
+                    this.lorem = this.lorem
+                    this.edit = false
+                }
+            },
+
+            template: '#componentTab3'
+        }
+
+        Vue.component('Tab1', {
+            template: '#componentTab'
+        })
+
+        new Vue({
+            el: '#it',
+            data: {
+                currentTabComponent: 'Tab1',
+            },
+            components: {
+                Dynamic1,
+                Dynamic2
+            }
+        })
+    </script>
+</body>
+
+</html>
