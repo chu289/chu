@@ -1,4 +1,4 @@
-# day24
+# day24_demo
 
 ## Project setup
 ```
