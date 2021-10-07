@@ -1,0 +1,120 @@
+.main-message {
+    height: 100%;
+    width: 100%;
+    color: #F1F6F9;
+}
+.main-message .title{
+    width: 25vw;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    box-sizing: border-box;
+    border-bottom: 2px solid #9BA4B4;
+    
+}
+.main-message .title h2{
+    font-size: 35px;
+}
+.main-message .title i{
+    position: absolute;
+    font-size: 30px;
+    right: 1em;
+    cursor: pointer;
+}
+.main-message .content-box{
+    width: 25vw;
+    height: 77vh;
+    display: block;
+    position: absolute;
+    top: 10vh;
+    box-sizing: border-box;
+    overflow-y: scroll;
+} 
+.main-message .content{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    border-bottom: 1px solid #9BA4B4;
+    padding: 3em;
+    position: relative;
+    transition: .3s;
+}
+.main-message .content:hover{
+    background-color: #394867;
+    transition: .3s;
+}
+
+.main-message .content .name{
+    position: absolute;
+    top: .5em;
+    left: .5em;
+    font-size: 28px;
+    font-weight: 700;
+}
+.main-message .content .select{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    
+}
+.main-message .content select{
+    height: 2em;
+    width: 7em;
+    text-align: center;
+    border-radius: 16px;
+    background-color: rgba(20, 39, 78, .3);
+    color: #F1F6F9;
+    border: none;
+    cursor: pointer;
+}
+
+.main-message .content select:focus{
+    outline: none;
+}
+
+.main-message .content .text{
+    position: relative;
+    top: .5em;
+    left: -1em;
+    font-size: 18px;
+    font-weight: 500;
+}
+.main-message .content .date{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+.main-message .fa-star.mark{
+    color: rgb(222, 184, 135);
+    transition: .3s;
+}
+
+.main-message .content-empty{
+    position: absolute;
+    padding: 0 1.2em;
+    top: 45%;
+}
+.main-message .content-empty h4{
+    font-size: 55px;
+    letter-spacing: 15px;
+}
+
+
+.main-message .content-box::-webkit-scrollbar {
+    width: 0.3em;
+    background-color: transparent;
+  }
+.main-message .content-box::-webkit-scrollbar-track {
+    background-color: rgba(67, 82, 113, .7);
+    border-radius: 200px;
+  }
+  .main-message .content-box::-webkit-scrollbar-thumb {
+    background-color: #e4e4e4;
+    border-radius: 200px;
+  }
